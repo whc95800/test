@@ -5,26 +5,25 @@
         <div class="nav-left">
           <img id="logo" alt="" src="../assets/images/logo.png"/>
         </div>
-        <div class="nav-right">
-          <ul class="menu-item">
-            <li class="menu-item-style" v-for="(item1,index1) in navList" :key="index1">
-              <router-link class="link-style" :to="`${item1.link}`">
-                    {{ item1.name }}
-                  </router-link>
+        <div class="nav-mid">
+          <ul class="main-menu">
+            <li class="main-item" v-for="(item1,index1) in navList" :key="index1">
+              <router-link class="main-link" :to="`${item1.link}`">
+                {{ item1.mainMenu }}
+              </router-link>
               <ul class="sub-menu">
-                <li class="subMenu-item-style"   v-show="item2.name === item1.name"  v-for="(item2,index2) in subList" :key="index2">
-                  <router-link class="subLink-style" :to="`${item2.link}`">
-                    {{item2.subMenu}}
+                <li class="sub-item" v-for="(item2,index2) in subList" :key="index2" v-show="item2.mainMenu === item1.mainMenu">
+                  <router-link class="sub-link" :to="`${item2.link}`">
+                    {{ item2.subMenu }}
                   </router-link>
                 </li>
               </ul>
             </li>
           </ul>
         </div>
-
-          <div class="nav-right-block" @click="menuClick()">
-            <span :class="middleLine"></span>
-          </div>
+        <div class="nav-right-block" @click="menuClick()">
+          <span :class="middleLine"></span>
+        </div>
       </div>
     </div>
     <transition name="top-bar-transition">
@@ -32,7 +31,7 @@
         <div class="top-bar-box">
           <div v-for="(item,index) in navList" :key="index" class="link-box"
                @click="this.$router.push({path:`/${item.link}`})">
-            <a>{{ item.name }}</a>
+            <a>{{ item.mainMenu }}</a>
           </div>
         </div>
       </div>
@@ -41,7 +40,7 @@
 </template>
 
 <script>
-import {onMounted, onUnmounted, ref} from "vue";
+import {ref} from "vue";
 
 export default {
   name: "Header",
@@ -49,19 +48,19 @@ export default {
     const middleLine = ref("middle-line-close")
     const topBarIsShow = ref(false)
     const navList = [
-      {name: "ホーム", link: "/"},
-      {name: "住宅物件", link: "Housing"},
-      {name: "店舗物件", link: "Store"},
-      {name: "会社概要", link: "About"},
-      {name: "アクセス", link: "Access"},
-      {name: "お問い合わせ", link: "Contact"},
+      {mainMenu: "ホーム", link: "/"},
+      {mainMenu: "住宅物件", link: "Housing"},
+      {mainMenu: "店舗物件", link: "Store"},
+      {mainMenu: "会社概要", link: "About"},
+      {mainMenu: "アクセス", link: "Access"},
+      {mainMenu: "お問い合わせ", link: "Contact"},
     ]
 
     const subList = [
-      {name: "住宅物件",subMenu:"自社物件", link: "Contact"},
-      {name: "住宅物件",subMenu:"他社物件", link: "Contact"},
-      {name: "会社概要",subMenu:"会社構成", link: "Contact"},
-      {name: "会社概要",subMenu:"メンバー", link: "Contact"},
+      {mainMenu: "住宅物件", subMenu: "自社物件", link: "Contact"},
+      {mainMenu: "住宅物件", subMenu: "他社物件", link: "Contact"},
+      {mainMenu: "会社概要", subMenu: "会社構成", link: "Contact"},
+      {mainMenu: "会社概要", subMenu: "メンバー", link: "Contact"},
     ]
 
     function menuClick() {
@@ -72,123 +71,134 @@ export default {
     }
 
 
-
     return {middleLine, topBarIsShow, navList, subList, menuClick,}
   }
 }
 </script>
 
 <style lang="less" scoped>
-.nav-body{
+.nav-body {
   width: 100%;
   z-index: 1;
+
   .nav {
     box-shadow: 0 1px 0 0 rgba(0, 11, 38, 0.12);
     display: flex;
     justify-content: center;
     background: white;
+
     .nav-bar {
       width: 1200px;
       height: 72px;
       padding: 0 24px;
       position: relative;
       transition: all 0.5s ease;
+
       .nav-left {
         position: relative;
-        top:17px;
+        top: 17px;
         height: 38px;
+
         #logo {
           height: 38px;
           transition: all 0.5s ease;
         }
       }
-      .nav-right {
+
+      .nav-mid {
         position: relative;
         height: 72px;
-        top:-38px;
+        top: -38px;
 
-          .menu-item {
+        .main-menu {
+          display: flex;
+          justify-content: center;
+          list-style: none;
+
+          .main-item {
+            position: relative;
             display: flex;
-            justify-content: center;
+            align-items: center;
+            height: 72px;
+            transition: all 0.5s ease-in-out;
             list-style: none;
-            .menu-item-style{
-              position: relative;
-              display: flex;
-              align-items: center;
-              height: 72px;
-              transition: all 0.5s ease-in-out;
-              list-style: none;
-              margin: 0 10px;
-              &:hover .sub-menu {
-                animation: fade-in 0.5s linear forwards;
-              }
-              @keyframes fade-in {
-                from {
-                  height: 0;
-                }
-                to {
-                  height: 95px;
-                }
-              }
-              .link-style{
-                display: block;
-                width: 100%;
-                height: 40px;
-                padding: 5px 12px;
-                font-size: 14px;
-                font-weight: 550;
-                line-height: 40px;
-                text-decoration: none;
-                color: #151919;
-                overflow: hidden;
-                transition: all 0.5s ease-in-out;
-                border-radius: 8px;
-              }
+            margin: 0 10px;
 
-              .link-style:hover{
-                background-color: rgb(235, 154, 1);
-                box-shadow: 2.5px 4.33px 15px 0 rgb(235, 154, 1, 0.4);
-              }
+            &:hover .sub-menu {
+              animation: fade-in 0.5s linear forwards;
+            }
 
-              .sub-menu{
+            @keyframes fade-in {
+              from {
                 height: 0;
-                position: absolute;
-                top:62px;
-                background-color: white;
-                border-radius: 8px;
-                overflow: hidden;
-                transition: all 0.5s ease-in-out;
-                .subMenu-item-style{
-                  height: 40px;
-                  margin: 5px;
-                  transition: all 0.5s ease-in-out;
-                  list-style: none;
-                  .subLink-style{
-                    display: block;
-                    height: 40px;
-                    padding: 0 12px;
-                    font-size: 14px;
-                    font-weight: 550;
-                    line-height: 40px;
-                    text-decoration: none;
-                    color: #151919;
-                    white-space: nowrap;
-                    transition: all 0.5s ease-in-out;
-                    border-radius: 8px;
-                  }
+              }
+              to {
+                height: 95px;
+              }
+            }
 
-                  .subLink-style:hover{
-                    background-color: rgb(235, 154, 1);
-                  }
+            .main-link {
+              display: block;
+              width: 100%;
+              height: 40px;
+              padding: 5px 12px;
+              font-size: 14px;
+              font-weight: 550;
+              line-height: 40px;
+              text-decoration: none;
+              color: #151919;
+              overflow: hidden;
+              transition: all 0.5s ease-in-out;
+              border-radius: 8px;
+            }
+
+            .main-link:hover {
+              background-color: rgb(235, 154, 1);
+              box-shadow: 2.5px 4.33px 15px 0 rgb(235, 154, 1, 0.4);
+            }
+
+            .sub-menu {
+              height: 0;
+              position: absolute;
+              top: 62px;
+              background-color: white;
+              border-radius: 8px;
+              overflow: hidden;
+              transition: all 0.5s ease-in-out;
+
+              .sub-item {
+                height: 40px;
+                margin: 5px;
+                transition: all 0.5s ease-in-out;
+                list-style: none;
+
+                .sub-link {
+                  display: block;
+                  height: 40px;
+                  padding: 0 12px;
+                  font-size: 14px;
+                  font-weight: 550;
+                  line-height: 40px;
+                  text-decoration: none;
+                  color: #151919;
+                  white-space: nowrap;
+                  transition: all 0.5s ease-in-out;
+                  border-radius: 8px;
+                }
+
+                .sub-link:hover {
+                  background-color: rgb(235, 154, 1);
                 }
               }
             }
           }
+        }
 
-        .menu-item:hover {
+        .main-menu:hover {
           color: #ffffff;
         }
       }
+
       .nav-right-block {
         display: none;
         position: relative;
@@ -249,6 +259,7 @@ export default {
       }
     }
   }
+
   .top-bar-bg {
     position: fixed;
     left: 0;
@@ -308,33 +319,39 @@ export default {
     .nav {
       .nav-bar {
         height: 56px;
+
         .nav-left {
           top: 13px;
           height: 30px;
+
           #logo {
             height: 30px;
           }
         }
-        .nav-right {
+
+        .nav-mid {
           display: none;
           height: 56px;
 
-            .menu-item {
-              .menu-item-style {
-                margin: 0 0 0 5px;
-                height: 56px;
-                line-height: 56px;
-                .link-style{
-                  height: 30px;
-                  line-height: 30px;
-                }
-                .sub-menu{
-                  top: 48px;
-                }
+          .main-menu {
+            .main-item {
+              margin: 0 0 0 5px;
+              height: 56px;
+              line-height: 56px;
+
+              .main-link {
+                height: 30px;
+                line-height: 30px;
+              }
+
+              .sub-menu {
+                top: 48px;
               }
             }
+          }
         }
-        .nav-right-block{
+
+        .nav-right-block {
           display: block;
         }
       }
@@ -348,18 +365,20 @@ export default {
       .nav-bar {
         display: flex;
         justify-content: space-between;
-        .nav-right {
-          top:0;
-          .main-menu{
-            .menu-item {
-              .menu-item-style{
+
+        .nav-mid {
+          top: 0;
+
+          .main-menu {
+            .main-menu {
+              .main-item {
                 margin: 0 0 0 20px;
-                  }
-                }
               }
             }
           }
         }
       }
     }
+  }
+}
 </style>
