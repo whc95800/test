@@ -1,19 +1,19 @@
 <template>
-  <div class="about-body">
+  <div class="housing-body">
     aaaaaaaaaaaaaaa
   </div>
 </template>
 
 <script>
 export default {
-  name: "About"
+  name: "Service"
 }
 </script>
 
 <style scoped>
-.about-body{
+.housing-body{
   height: 2000px;
   width: 100%;
-  background-color: #42db18;
+  background-color: #eb9a01;
 }
 </style>

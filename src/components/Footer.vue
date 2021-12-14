@@ -12,7 +12,7 @@ export default {
 
 <style lang="less" scoped>
 .footer-bar{
-  background-color: #42b983;
+  background-color: white;
 }
 
 </style>
