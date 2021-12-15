@@ -91,51 +91,38 @@ export default {
       width: 1200px;
       height: 72px;
       padding: 0 24px;
-      position: relative;
-      transition: all 0.5s ease;
+      display: flex;
 
       .nav-left {
-        position: relative;
-        top: 17px;
-        height: 38px;
+        width: 25%;
+        display: flex;
+        align-items: center;
 
         #logo {
           height: 38px;
-          transition: all 0.5s ease;
         }
       }
 
       .nav-mid {
-        position: relative;
+        width: 75%;
         height: 72px;
-        top: -38px;
 
         .main-menu {
           display: flex;
-          justify-content: center;
           list-style: none;
 
           .main-item {
-            position: relative;
             display: flex;
             align-items: center;
             height: 72px;
-            transition: all 0.5s ease-in-out;
             list-style: none;
             margin: 0 10px;
+            white-space: nowrap;
 
             &:hover .sub-menu {
-              animation: fade-in 0.5s linear forwards;
+              height: auto;
             }
 
-            @keyframes fade-in {
-              from {
-                height: 0;
-              }
-              to {
-                height: 95px;
-              }
-            }
 
             .main-link {
               display: block;
@@ -148,7 +135,6 @@ export default {
               text-decoration: none;
               color: #151919;
               overflow: hidden;
-              transition: all 0.5s ease-in-out;
               border-radius: 8px;
             }
 
@@ -164,12 +150,10 @@ export default {
               background-color: white;
               border-radius: 8px;
               overflow: hidden;
-              transition: all 0.5s ease-in-out;
 
               .sub-item {
                 height: 40px;
                 margin: 5px;
-                transition: all 0.5s ease-in-out;
                 list-style: none;
 
                 .sub-link {
@@ -182,7 +166,6 @@ export default {
                   text-decoration: none;
                   color: #151919;
                   white-space: nowrap;
-                  transition: all 0.5s ease-in-out;
                   border-radius: 8px;
                 }
 
@@ -321,9 +304,6 @@ export default {
         height: 56px;
 
         .nav-left {
-          top: 13px;
-          height: 30px;
-
           #logo {
             height: 30px;
           }
@@ -359,24 +339,27 @@ export default {
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 870px) {
   .nav-body {
     .nav {
       .nav-bar {
         display: flex;
         justify-content: space-between;
 
+        .nav-left{
+          width: auto;
+        }
+
         .nav-mid {
           top: 0;
 
-          .main-menu {
             .main-menu {
+              justify-content: right;
               .main-item {
-                margin: 0 0 0 20px;
+                margin: 0 0 0 10px;
               }
             }
           }
-        }
       }
     }
   }
