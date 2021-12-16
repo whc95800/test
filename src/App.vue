@@ -20,15 +20,21 @@ export default {
 }
 </script>
 <style lang="less">
-*{
+* {
   font-family: "Centra No2", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
-body,ul{
+
+body, ul {
   margin: 0;
   padding: 0;
 }
-.header-sp{
-  top:0;
+
+a {
+  font-size: 16px
+}
+
+.header-sp {
+  top: 0;
   position: -webkit-sticky;
   position: sticky;
 }

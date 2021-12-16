@@ -79,13 +79,13 @@ export default {
 <style lang="less" scoped>
 .nav-body {
   width: 100%;
-  z-index: 1;
+  z-index: 100;
 
   .nav {
     box-shadow: 0 1px 0 0 rgba(0, 11, 38, 0.12);
     display: flex;
     justify-content: center;
-    background: white;
+    background-color: transparent;
 
     .nav-bar {
       width: 1200px;
@@ -97,7 +97,7 @@ export default {
         position: absolute;
         display: flex;
         align-items: center;
-        margin: 17px 0;
+        margin-top: 17px;
 
         #logo {
           height: 38px;
@@ -105,22 +105,24 @@ export default {
       }
 
       .nav-mid {
+        height: 100%;
+        display: flex;
         margin: auto;
-        height: 72px;
 
         .main-menu {
           display: flex;
           list-style: none;
 
           .main-item {
-            display: flex;
-            align-items: center;
-            height: 72px;
+            width: 100%;
             list-style: none;
             margin: 0 10px;
+
             white-space: nowrap;
+
             &:hover .sub-menu {
-              height: 130%;
+              height: auto;
+
               .sub-item {
                 height: 40px;
               }
@@ -129,12 +131,11 @@ export default {
 
             .main-link {
               display: block;
-              width: 100%;
-              height: 40px;
-              padding: 5px 12px;
-              font-size: 14px;
-              font-weight: 550;
+              text-align: center;
+              margin-top: 11px;
               line-height: 40px;
+              padding: 5px 12px;
+              font-weight: 550;
               text-decoration: none;
               color: #151919;
               overflow: hidden;
@@ -148,21 +149,15 @@ export default {
 
             .sub-menu {
               height: 0;
-              position: absolute;
-              top: 62px;
               background-color: white;
               border-radius: 8px;
               overflow: hidden;
-              transition: all 0.5s ease;
 
               .sub-item {
-                display: flex;
-                align-items: center;
                 height: 0;
                 margin: 5px;
                 border-radius: 8px;
                 list-style: none;
-                overflow: hidden;
                 transition: all 0.5s ease;
 
                 .sub-link {
@@ -172,11 +167,12 @@ export default {
                   text-decoration: none;
                   color: #151919;
                   white-space: nowrap;
-
+                  height: 40px;
+                  line-height: 40px;
                 }
               }
               .sub-item:hover {
-                background-color: rgb(235, 154, 1);
+                background-color: rgb(66, 219, 24);
               }
             }
           }
@@ -320,31 +316,28 @@ export default {
   }
 }
 
-@media (max-width: 823px) {
+@media (max-width: 860px) {
   .nav-body {
     .nav {
       .nav-bar {
         height: 56px;
+
         .nav-left {
           #logo {
             height: 30px;
           }
         }
+
         .nav-mid {
             .main-menu {
               .main-item {
                 margin: 0 0 0 5px;
-                height: 56px;
-                line-height: 56px;
-
                 .main-link {
+                  font-size: 14px;
                   height: 30px;
                   line-height: 30px;
+                  margin-top: 8px;
                 }
-
-                .sub-menu {
-                top: 48px;
-              }
             }
           }
           }
@@ -360,8 +353,9 @@ export default {
       .nav-bar {
         display: flex;
         justify-content: space-between;
-        .nav-left{
+        .nav-left {
           position: relative;
+          margin-top: 0;
         }
         .nav-mid{
           margin: 0;
