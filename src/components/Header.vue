@@ -94,9 +94,10 @@ export default {
       display: flex;
 
       .nav-left {
-        width: 25%;
+        position: absolute;
         display: flex;
         align-items: center;
+        margin: 17px 0;
 
         #logo {
           height: 38px;
@@ -104,7 +105,7 @@ export default {
       }
 
       .nav-mid {
-        width: 75%;
+        margin: auto;
         height: 72px;
 
         .main-menu {
@@ -118,9 +119,11 @@ export default {
             list-style: none;
             margin: 0 10px;
             white-space: nowrap;
-
             &:hover .sub-menu {
-              height: auto;
+              height: 130%;
+              .sub-item {
+                height: 40px;
+              }
             }
 
 
@@ -150,28 +153,30 @@ export default {
               background-color: white;
               border-radius: 8px;
               overflow: hidden;
+              transition: all 0.5s ease;
 
               .sub-item {
-                height: 40px;
+                display: flex;
+                align-items: center;
+                height: 0;
                 margin: 5px;
+                border-radius: 8px;
                 list-style: none;
+                overflow: hidden;
+                transition: all 0.5s ease;
 
                 .sub-link {
-                  display: block;
-                  height: 40px;
-                  padding: 0 12px;
+                  padding: 5px 12px;
                   font-size: 14px;
                   font-weight: 550;
-                  line-height: 40px;
                   text-decoration: none;
                   color: #151919;
                   white-space: nowrap;
-                  border-radius: 8px;
-                }
 
-                .sub-link:hover {
-                  background-color: rgb(235, 154, 1);
                 }
+              }
+              .sub-item:hover {
+                background-color: rgb(235, 154, 1);
               }
             }
           }
@@ -285,7 +290,7 @@ export default {
   }
 
   &-enter-active {
-    transition: all 0.4s ease; //划入过渡，用 0.5s
+    transition: all 0.4s ease-in; //划入过渡，用 0.5s
   }
 
   &-leave-to {
@@ -293,7 +298,7 @@ export default {
   }
 
   &-leave-active {
-    transition: all 0.4s ease-in; //划出过渡，用 0.5s
+    transition: all 0.4s ease-out; //划出过渡，用 0.5s
   }
 }
 
@@ -301,19 +306,32 @@ export default {
   .nav-body {
     .nav {
       .nav-bar {
-        height: 56px;
 
+        .nav-mid {
+          display: none;
+          height: 56px;
+        }
+
+        .nav-right-block {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 823px) {
+  .nav-body {
+    .nav {
+      .nav-bar {
+        height: 56px;
         .nav-left {
           #logo {
             height: 30px;
           }
         }
-
         .nav-mid {
-          display: none;
-          height: 56px;
-
-          .main-menu {
+            .main-menu {
             .main-item {
               margin: 0 0 0 5px;
               height: 56px;
@@ -329,37 +347,25 @@ export default {
               }
             }
           }
-        }
+          }
 
-        .nav-right-block {
-          display: block;
-        }
       }
     }
   }
 }
 
-@media (max-width: 870px) {
+@media (max-width: 1024px) {
   .nav-body {
     .nav {
       .nav-bar {
         display: flex;
         justify-content: space-between;
-
         .nav-left{
-          width: auto;
+          position: relative;
         }
-
-        .nav-mid {
-          top: 0;
-
-            .main-menu {
-              justify-content: right;
-              .main-item {
-                margin: 0 0 0 10px;
-              }
-            }
-          }
+        .nav-mid{
+          margin: 0;
+        }
       }
     }
   }
