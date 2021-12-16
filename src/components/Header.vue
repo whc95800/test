@@ -332,17 +332,17 @@ export default {
         }
         .nav-mid {
             .main-menu {
-            .main-item {
-              margin: 0 0 0 5px;
-              height: 56px;
-              line-height: 56px;
+              .main-item {
+                margin: 0 0 0 5px;
+                height: 56px;
+                line-height: 56px;
 
-              .main-link {
-                height: 30px;
-                line-height: 30px;
-              }
+                .main-link {
+                  height: 30px;
+                  line-height: 30px;
+                }
 
-              .sub-menu {
+                .sub-menu {
                 top: 48px;
               }
             }
