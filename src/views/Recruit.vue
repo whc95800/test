@@ -1,16 +1,5 @@
 <template>
   <div id="main">
-    <section id="new">
-      <h2>更新情報・お知らせ</h2>
-      <dl>
-        <div>
-          <dt>20121/08/30</dt>
-          <dd>新型コロナウイルス感染症に関する当社の基本方針および対応について＜2021年8月30日更新＞<span class="newicon">NEW</span></dd>
-        </div>
-      </dl>
-      <p class="r">»&nbsp;<router-link to="News">過去ログ</router-link>
-      </p>
-    </section>
     <section>
       <h2>テンプレートのご利用前に必ずお読み下さい</h2>
       <h3>利用規約のご案内</h3>
@@ -23,7 +12,7 @@
 
 <script>
 export default {
-  name: "Home"
+  name: "Recruit"
 }
 </script>
 

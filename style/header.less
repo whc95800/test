@@ -1,0 +1,251 @@
+#header {
+  height: 100px; /*高さ*/
+
+  /*ロゴ画像*/
+
+  #logo {
+    float: left; /*左に回り込み*/
+    margin: 10px 0 0 15px; /*ブロックの上下にあける余白。上下のバランスをここで調整して下さい。*/
+    height: 80px; /*ロゴ画像の高さ*/
+  }
+
+  /*ヘッダー右側の電話番号ブロック*/
+
+  .tel-body {
+    float: right; /*右に回り込み*/
+    margin: 19px 30px 0 0; /*ブロックの上、下、左にあける余白。上下のバランスをここで調整して下さい。*/
+    text-align: center; /*文字をセンタリング*/
+
+    /*TEL*/
+
+    .tel {
+      letter-spacing: 0.2em; /*文字間隔を広くする設定。通常がいいならこの行削除。*/
+      font-size: 20px; /*文字サイズを大きく*/
+      color: #ec9b00; /*文字色*/
+
+      /*TELの受付時間の小文字部分*/
+
+      span {
+        display: block;
+        font-size: 11px; /*文字サイズを小さく*/
+        letter-spacing: 0.1em; /*文字間隔*/
+        color: #666; /*文字色*/
+      }
+    }
+  }
+
+  /*メニューブロック*/
+
+  .header-right-menu {
+    display: none; /*PC端末の場合表示させない*/
+    width: 50px; /*メニューブロックの幅*/
+    height: 50px; /*メニューブロックの高さ*/
+    float: right; /*右に回り込み*/
+    margin: 5px 0; /*ブロックの上下にあける余白。上下のバランスをここで調整して下さい。*/
+
+    /*メニューブロック構成*/
+
+    .middle-line-close { /*真中のライン*/
+      display: block;
+      width: 30px; /*ラインの幅*/
+      height: 4px; /*ライン太さ*/
+      top: 24px; /*メニューブロックの配置、上下の移動はここで調整してください*/
+      border-radius: 4px;
+      background-color: #151919; /*ラインの色*/
+      position: relative;
+      transition: all 0.5s ease; /*動画実行に必要の時間*/
+      margin: auto; /*ラインをセンタリング*/
+      z-index: 100;
+
+      &::before { /*上のライン*/
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 4px;
+        bottom: 11px;
+        border-radius: 4px;
+        background-color: #151919;
+        transition: all 0.5s ease;
+      }
+
+      &::after { /*下のライン*/
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 4px;
+        top: 11px;
+        border-radius: 4px;
+        background-color: #151919;
+        transition: all 0.5s ease;
+      }
+    }
+
+    .open {
+      background-color: transparent; //中间的线变透明
+
+      &::before {
+        background-color: white;
+        transform: translateY(11px) rotate(-45deg); //上方的线向下移动9并且逆时针旋转45°
+      }
+
+      &::after {
+        background-color: white;
+        transform: translateY(-11px) rotate(45deg); //下方的线向上移动9并且顺时针旋转45°
+      }
+    }
+  }
+
+  .hidde-menu-transition {
+    &-enter-from {
+      transform: translateY(-100%); //整体划入之前隐藏在最左侧
+    }
+
+    &-enter-active {
+      transition: all 0.4s ease-in; //划入过渡，用 0.5s
+    }
+
+    &-leave-to {
+      transform: translateY(-100%); //整体划出之后隐藏在最左侧
+    }
+
+    &-leave-active {
+      transition: all 0.4s ease-out; //划出过渡，用 0.5s
+    }
+  }
+
+  .hidde-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(52, 53, 53, 0.9);
+    user-select: none;
+    z-index: 10;
+    font-size: 20px;
+
+    .hidde-menu-main {
+      margin-top: 80px;
+      color: rgba(214, 214, 215, 1);
+      text-align: center;
+
+      .hidde-menu-item {
+        width: 70%;
+        margin: auto;
+        white-space: nowrap;
+
+        .menu-item-link {
+          display: block;
+          padding: 15px 10px 15px 20px;
+          line-height: 1;
+          margin: auto;
+          font-size: 20px;
+          font-weight: 500;
+          text-decoration: none;
+          color: white;
+          border-left: 3px solid transparent;
+          transition: all 0.5s ease;
+
+          span {
+            font-size: 12px;
+          }
+        }
+
+        .menu-item-link:hover {
+          border-left: 3px solid #eb9a01;
+          color: #eb9a01;
+          background-color: rgba(0, 0, 0, 0.35);
+
+          span {
+            color: #18a3db;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+/*メニューブロック*/
+#menubar {
+  clear: both;
+  overflow: hidden;
+
+  /*メニュー１個あたりの設定*/
+
+  li {
+    float: left; /*左に回り込み*/
+    width: 16.666666%; /*メニュー幅（100÷6個=16.66%）　もし４個にするなら100÷4=25%になる。*/
+
+    a {
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      color: #ec9b00; /*文字色*/
+      font-weight: bold; /*太字に*/
+      border-right: 1px solid #dcdcdc; /*メニューの右側の線の幅、線種、色*/
+      line-height: 1.6; /*行間を少し狭く*/
+      padding: 14px 0; /*上下、左右へのメニュー内への余白*/
+      transition: all 0.5s ease;
+
+      /*装飾文字の設定*/
+
+      span {
+        text-shadow: none;
+        display: block;
+        font-size: 9px; /*文字サイズ*/
+        font-weight: normal; /*文字を太字でなく標準に戻す設定*/
+        letter-spacing: 0.2em; /*文字間隔を少しあける設定*/
+        color: #999; /*文字色*/
+      }
+    }
+
+    /*マウスオン時*/
+
+    a:hover {
+      background: #ec9b00; /*背景色*/
+      color: #fff;
+
+      span {
+        color: #18a3db; /*文字色*/
+      }
+    }
+  }
+
+  /*１つ目のメニューへの追加設定*/
+
+  li:first-child a {
+    border-left: 1px solid #dcdcdc; /*メニューの線の幅、線種、色*/
+  }
+}
+
+
+@media (max-width: 767px) {
+  #header {
+    height: 60px; /*スマホ用HEADERの高さを低くする*/
+
+    #logo {
+      height: 50px; /*スマホ用ロゴを小さくする*/
+      margin: 5px; /*ロゴをセンタリングする*/
+    }
+
+    /*スマホ用TELを表示させない*/
+
+    .tel-body {
+      display: none;
+    }
+
+    /*スマホ用メニューを表示させる*/
+
+    .header-right-menu {
+      display: block;
+      margin: 5px;
+    }
+
+  }
+
+  /*スマホ用メニューを表示させない*/
+  #menubar {
+    display: none;
+  }
+}

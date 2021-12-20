@@ -3,7 +3,7 @@
 
     <section>
 
-      <h2>会社概要</h2>
+      <h2>物件管理</h2>
 
       <div class="list">
         <a href="item.html">
@@ -97,14 +97,10 @@
 
 <script>
 export default {
-  name: "About"
+  name: "Store"
 }
 </script>
 
 <style scoped>
-.about-body{
-  height: 2000px;
-  width: 100%;
-  background-color: #42db18;
-}
+
 </style>

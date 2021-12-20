@@ -1,6 +1,8 @@
 <template>
-  <Header class="header-sp" />
-  <router-view/>
+  <div id="container">
+    <Header/>
+    <Base/>
+  </div>
   <Footer/>
 </template>
 
@@ -11,32 +13,18 @@
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Base from "./views/Base";
+import '../style/footer.less';
+import '../style/header.less';
+import '../style/style.css';
 
 export default {
-  components: {Footer, Header},
-  setup(){
-    document.body.addEventListener("touchstart", function(){})
-  }
+  components: {Footer, Header, Base},
+  setup() {
+    document.body.addEventListener("touchstart", function () {
+    })
+  },
 }
 </script>
-<style lang="less">
-* {
-  font-family: "Centra No2", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-body, ul {
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  font-size: 16px
-}
-
-.header-sp {
-  top: 0;
-  position: -webkit-sticky;
-  position: sticky;
-}
-
+<style>
 </style>
