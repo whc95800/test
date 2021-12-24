@@ -461,7 +461,6 @@ a:hover {
 #sub h2 + .list a,
 #side h2 + .list a {
     border-top: none; /*メニューの一番上の線を消す設定*/
-    margin-top: -10px; /*h2見出しの下の余白を相殺する*/
 }
 
 /*トップページ内「更新情報・お知らせ」ブロック
@@ -663,7 +662,6 @@ h2 span.option1, h2 span.option2 {
     line-height: 1.5;
     padding: 2px 5px;
     border-radius: 2px;
-    margin: 0px 5px;
     vertical-align: text-top;
 }
 

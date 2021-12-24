@@ -22,21 +22,25 @@
   </div>
   <nav id="menubar">
     <ul>
-      <li v-for="(item,index) in navList" :key="index">
+      <li v-for="(item,index) in navList" :key="index" @click="hiddenBanner(index)">
         <router-link :to="`${item.link}`">{{ item.mainMenu }}<span>{{ item.enMainMenu }}</span></router-link>
       </li>
     </ul>
   </nav>
+  <Banner v-show="showBanner"/>
 </template>
 
 <script>
 import {ref} from "vue";
+import Banner from "../components/Banner";
 
 export default {
   name: "Header",
+  components: {Banner},
   setup() {
     const middleLine = ref("middle-line-close")
     const topBarIsShow = ref(false)
+    const showBanner = ref(true)
     const navList = [
       {mainMenu: "ホーム", enMainMenu: "HOME", link: "/"},
       {mainMenu: "自社物件", enMainMenu: "JISHABUKEN", link: "/Item"},
@@ -53,8 +57,12 @@ export default {
       topBarIsShow.value = !topBarIsShow.value
     }
 
+    function hiddenBanner(i){
+      showBanner.value = i === 0;
+    }
 
-    return {middleLine, topBarIsShow, navList, menuClick,}
+
+    return {middleLine, topBarIsShow, navList, showBanner, menuClick,hiddenBanner}
   }
 }
 </script>

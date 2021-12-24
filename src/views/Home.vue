@@ -4,18 +4,11 @@
       <h2>更新情報・お知らせ</h2>
       <dl>
         <div>
-          <dt>20121/08/30</dt>
+          <dt>2021/08/30</dt>
           <dd>新型コロナウイルス感染症に関する当社の基本方針および対応について＜2021年8月30日更新＞<span class="newicon">NEW</span></dd>
         </div>
       </dl>
       <p class="r">»&nbsp;<router-link to="News">過去ログ</router-link>
-      </p>
-    </section>
-    <section>
-      <h2>テンプレートのご利用前に必ずお読み下さい</h2>
-      <h3>利用規約のご案内</h3>
-      <p><strong class="color1">■下部の著作を外したい場合は</strong><br>
-        <a href="https://template-party.com/">Template-Party</a>の<a href="https://template-party.com/member.html">ライセンス契約</a>を行う事でHP下部の著作を外す事ができます。
       </p>
     </section>
   </div>
